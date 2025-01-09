@@ -7,10 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+//develper profile
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link developer_profile#newInstance} factory method to
+ * Use the {@link #newInstance} factory method to
  * create an instance of this fragment.
  */
 public class developer_profile extends Fragment {
