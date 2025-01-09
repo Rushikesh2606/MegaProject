@@ -1,4 +1,4 @@
-package com.example.codebrains;
+package com.example.codebrains.ui;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -18,10 +18,14 @@ import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.Calendar;
+
+
+import com.example.codebrains.R;
+import com.example.codebrains.freelancer_form1;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+
 public class register extends AppCompatActivity {
     Button btn_profile, btn_register;
     ArrayList<String> gender = new ArrayList<>();
