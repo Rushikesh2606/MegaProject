@@ -86,10 +86,13 @@
 
         <!-- Date of Birth -->
         <EditText
+            android:id="@+id/dob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Date of Birth"
-            android:inputType="date"
+            android:focusable="false"
+            android:clickable="true"
+            android:inputType="none"
             android:textColorHint="#000000"
             android:background="@android:drawable/edit_text"
             android:padding="12dp"

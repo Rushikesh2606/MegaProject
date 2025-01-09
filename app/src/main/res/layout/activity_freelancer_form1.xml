@@ -70,6 +70,7 @@
 
         <!-- Years of Experience -->
         <EditText
+            android:id="@+id/calendertext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Years of Experience"
@@ -78,7 +79,10 @@
             android:textColorHint="#000"
             android:padding="12dp"
             android:layout_marginBottom="16dp"
-            android:inputType="number" />
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:inputType="none" />
+
 
         <!-- Next Button -->
         <Button

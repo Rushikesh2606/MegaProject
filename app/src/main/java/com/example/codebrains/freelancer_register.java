@@ -33,6 +33,7 @@ public class freelancer_register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(freelancer_register.this, Homepage.class);
+                startActivity(i);
             }
         });
    // related to the resume file picker
