@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/logo2" />
+
+            <TextView
+                android:id="@+id/subtitle_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/sub"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:gravity="center" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#4285F4">
+
+                <Button
+                    android:id="@+id/google_sign_in_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:backgroundTint="#4285F4"
+                    android:drawablePadding="8dp"
+                    android:text="@string/conti"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40.6dp"
+                    android:src="@drawable/google3"
+                    android:layout_marginTop="3.9dp"
+                    android:background="@drawable/cirsl"/>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="or"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:gravity="center" />
+
+            <EditText
+                android:id="@+id/first_name"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="24dp"
+                android:textColorHint="#1E1E1E"
+                android:hint="First name"
+                android:padding="12dp"
+                android:backgroundTint="#DDDDDD"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/last_name"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:hint="Last name"
+                android:textColorHint="#1E1E1E"
+                android:padding="12dp"
+                android:backgroundTint="#DDDDDD"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:hint="Email"
+                android:padding="12dp"
+                android:textColorHint="#1E1E1E"
+                android:backgroundTint="#DDDDDD"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:textColorHint="#1E1E1E"
+                android:layout_marginTop="8dp"
+                android:hint="Password (8 or more characters)"
+                android:padding="12dp"
+                android:backgroundTint="#DDDDDD"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/country"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:textColorHint="#1E1E1E"
+                android:hint="Country"
+                android:padding="12dp"
+                android:backgroundTint="#DDDDDD"
+                android:inputType="text" />
+
+            <CheckBox
+                android:id="@+id/email_opt_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Send me helpful emails to find rewarding work and job leads."
+                android:textColor="#000000" />
+
+            <CheckBox
+                android:id="@+id/terms_and_conditions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Yes, I understand and agree to the Upwork Terms of Service, including the User Agreement and Privacy Policy."
+                android:textColor="#000000" />
+
+            <Button
+                android:id="@+id/sign_up_button"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="24dp"
+                android:text="Sign Up"
+                android:backgroundTint="#1EB980"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
