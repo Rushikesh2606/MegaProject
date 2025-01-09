@@ -18,67 +18,78 @@
             android:layout_height="wrap_content"
             android:text="Professional Expertise (Form 1)"
             android:textColor="#000"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:fontFamily="sans-serif-medium"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="24dp"
+            android:textStyle="bold"/>
 
         <!-- Specialized Skills -->
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Specialized Skills"
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/rounded_edittext"
             android:textColor="#000"
-            android:textColorHint="#000"
-            android:padding="12dp"
-            android:layout_marginBottom="8dp" />
+            android:textColorHint="#808080"
+            android:padding="14dp"
+            android:layout_marginBottom="12dp"
+            android:importantForAccessibility="yes"
+            android:contentDescription="Specialized Skills input field"/>
 
         <!-- Tools/Software Expertise -->
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tools/Software Expertise"
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/rounded_edittext"
             android:textColor="#000"
-            android:textColorHint="#000"
-            android:padding="12dp"
-            android:layout_marginBottom="8dp" />
+            android:textColorHint="#808080"
+            android:padding="14dp"
+            android:layout_marginBottom="12dp"
+            android:importantForAccessibility="yes"
+            android:contentDescription="Tools/Software Expertise input field"/>
 
         <!-- Tagline -->
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tagline"
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/rounded_edittext"
             android:textColor="#000"
-            android:textColorHint="#000"
-            android:padding="12dp"
-            android:layout_marginBottom="8dp" />
+            android:textColorHint="#808080"
+            android:padding="14dp"
+            android:layout_marginBottom="12dp"
+            android:importantForAccessibility="yes"
+            android:contentDescription="Tagline input field"/>
 
         <!-- Description/About Me -->
         <EditText
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:hint="Description/About Me"
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/rounded_edittext"
             android:textColor="#000"
-            android:textColorHint="#000"
+            android:textColorHint="#808080"
             android:gravity="top|start"
-            android:padding="12dp"
-            android:layout_marginBottom="8dp"
-            android:inputType="textMultiLine" />
+            android:padding="14dp"
+            android:layout_marginBottom="12dp"
+            android:inputType="textMultiLine"
+            android:importantForAccessibility="yes"
+            android:contentDescription="Description/About Me input field"/>
 
         <!-- Years of Experience -->
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Years of Experience"
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/rounded_edittext"
             android:textColor="#000"
-            android:textColorHint="#000"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"
-            android:inputType="number" />
+            android:textColorHint="#808080"
+            android:padding="14dp"
+            android:layout_marginBottom="24dp"
+            android:inputType="number"
+            android:importantForAccessibility="yes"
+            android:contentDescription="Years of Experience input field"/>
 
         <!-- Next Button -->
         <Button
@@ -86,8 +97,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Next"
+            android:textSize="18sp"
             android:backgroundTint="#1EB980"
             android:textColor="#fff"
-            android:padding="12dp" />
+            android:padding="14dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center"
+            android:drawableRight="@drawable/next"
+            android:importantForAccessibility="yes"
+            android:contentDescription="Next button for form submission"/>
     </LinearLayout>
 </ScrollView>

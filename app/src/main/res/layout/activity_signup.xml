@@ -30,6 +30,7 @@
                 android:textSize="18sp"
                 android:textColor="#000000"
                 android:gravity="center" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
@@ -45,6 +46,7 @@
                     android:text="@string/conti"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
+
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40.6dp"
@@ -52,6 +54,7 @@
                     android:layout_marginTop="3.9dp"
                     android:background="@drawable/cirsl"/>
             </RelativeLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="24dp"
-                android:textColorHint="#1E1E1E"
+                android:textColorHint="#808080"
                 android:hint="First name"
                 android:padding="12dp"
                 android:backgroundTint="#DDDDDD"
@@ -78,7 +81,7 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:hint="Last name"
-                android:textColorHint="#1E1E1E"
+                android:textColorHint="#808080"
                 android:padding="12dp"
                 android:backgroundTint="#DDDDDD"
                 android:inputType="textPersonName" />
@@ -90,7 +93,7 @@
                 android:layout_marginTop="8dp"
                 android:hint="Email"
                 android:padding="12dp"
-                android:textColorHint="#1E1E1E"
+                android:textColorHint="#808080"
                 android:backgroundTint="#DDDDDD"
                 android:inputType="textEmailAddress" />
 
@@ -98,7 +101,7 @@
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:textColorHint="#1E1E1E"
+                android:textColorHint="#808080"
                 android:layout_marginTop="8dp"
                 android:hint="Password (8 or more characters)"
                 android:padding="12dp"
@@ -110,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
-                android:textColorHint="#1E1E1E"
+                android:textColorHint="#808080"
                 android:hint="Country"
                 android:padding="12dp"
                 android:backgroundTint="#DDDDDD"
