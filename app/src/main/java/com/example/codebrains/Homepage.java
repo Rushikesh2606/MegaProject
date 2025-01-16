@@ -12,6 +12,8 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -72,6 +74,15 @@ public class Homepage extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 }
+                if (id == R.id.profile) {
+                    // Navigate to the Profile Fragment
+                    FragmentManager fm = getSupportFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.replace(R.id.home, new ProfileFragment()); // Use the correct container ID
+                    ft.commit(); // Don't forget to commit the transaction
+                    return true;
+                }
+
 
                 // Default behavior for other menu items
                 return NavigationUI.onNavDestinationSelected(item, navController)
