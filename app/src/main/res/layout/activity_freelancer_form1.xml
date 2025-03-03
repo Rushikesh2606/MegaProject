@@ -24,6 +24,7 @@
 
         <!-- Specialized Skills -->
         <EditText
+            android:id="@+id/skills"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Specialized Skills"
@@ -35,6 +36,7 @@
 
         <!-- Tools/Software Expertise -->
         <EditText
+            android:id="@+id/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tools/Software Expertise"
@@ -46,6 +48,7 @@
 
         <!-- Tagline -->
         <EditText
+            android:id="@+id/tagLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tagline"
@@ -57,6 +60,7 @@
 
         <!-- Description/About Me -->
         <EditText
+            android:id="@+id/desc"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:hint="Description/About Me"
@@ -79,9 +83,8 @@
             android:textColorHint="#000"
             android:padding="12dp"
             android:layout_marginBottom="16dp"
-            android:focusable="false"
-            android:cursorVisible="false"
-            android:inputType="none" />
+
+            android:inputType="number" />
 
 
         <!-- Next Button -->

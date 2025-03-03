@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
@@ -31,29 +32,26 @@
                 android:textColor="#000000"
                 android:gravity="center" />
 
-            <RelativeLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="58dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:backgroundTint="#4285F4">
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp">
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/google_sign_in_button"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="58dp"
                     android:backgroundTint="#4285F4"
-                    android:drawablePadding="8dp"
                     android:text="@string/conti"
                     android:textColor="#FFFFFF"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40.6dp"
-                    android:src="@drawable/google3"
-                    android:layout_marginTop="3.9dp"
-                    android:background="@drawable/cirsl"/>
-            </RelativeLayout>
+                    android:textSize="16sp"
+                    app:icon="@drawable/google3"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:iconSize="24dp" />
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,87 +62,95 @@
                 android:textSize="16sp"
                 android:gravity="center" />
 
-            <EditText
-                android:id="@+id/first_name"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/first_name_layout"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:textColorHint="#808080"
                 android:hint="First name"
-                android:padding="12dp"
-                android:backgroundTint="#DDDDDD"
-                android:inputType="textPersonName" />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <EditText
-                android:id="@+id/last_name"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/last_name_layout"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="Last name"
-                android:textColorHint="#808080"
-                android:padding="12dp"
-                android:backgroundTint="#DDDDDD"
-                android:inputType="textPersonName" />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <EditText
-                android:id="@+id/email"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_layout"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="Email"
-                android:padding="12dp"
-                android:textColorHint="#808080"
-                android:backgroundTint="#DDDDDD"
-                android:inputType="textEmailAddress" />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:textColorHint="#808080"
-                android:layout_marginTop="8dp"
-                android:hint="Password (8 or more characters)"
-                android:padding="12dp"
-                android:backgroundTint="#DDDDDD"
-                android:inputType="textPassword" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/country"
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/country_layout"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColorHint="#808080"
                 android:hint="Country"
-                android:padding="12dp"
-                android:backgroundTint="#DDDDDD"
-                android:inputType="text" />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
-            <CheckBox
+                <AutoCompleteTextView
+                    android:id="@+id/country"
+                    android:text="Country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/email_opt_in"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Send me helpful emails to find rewarding work and job leads."
                 android:textColor="#000000" />
 
-            <CheckBox
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/terms_and_conditions"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Yes, I understand and agree to the Upwork Terms of Service, including the User Agreement and Privacy Policy."
                 android:textColor="#000000" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/sign_up_button"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="58dp"
                 android:layout_marginTop="24dp"
                 android:text="Sign Up"
-                android:backgroundTint="#1EB980"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp" />
-
+                android:textSize="16sp"
+                app:cornerRadius="24dp"
+                app:backgroundTint="#1EB980" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

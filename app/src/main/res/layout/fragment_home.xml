@@ -42,26 +42,41 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/rating"
-                        android:textColor="#5b5b5b"
-                        android:textStyle="bold" />
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/clientUserCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         app:cardBackgroundColor="#F0F4F8"
+                        android:layout_marginRight="@dimen/_10sdp"
                         app:cardCornerRadius="22dp"
-                        app:cardElevation="3dp">
+                        app:cardElevation="3dp"
+                        app:layout_constraintEnd_toStartOf="@+id/freeCard"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ratingCard"
+                        app:layout_constraintWidth_percent="0.48">
 
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/rating" />
-                    </androidx.cardview.widget.CardView>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/client_user"
+                                android:textColor="#3FA796"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="8dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/clientuser" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -70,26 +85,42 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/Payment"
-                        android:textColor="#5b5b5b"
-                        android:textStyle="bold" />
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/paymentCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    app:cardBackgroundColor="#F0F4F8"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="3dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ratingCard"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.48">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:cardBackgroundColor="#F0F4F8"
-                        app:cardCornerRadius="22dp"
-                        app:cardElevation="3dp">
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Payment"
+                            android:textColor="#3FA796"
+                            android:textStyle="bold" />
 
                         <ImageView
-                            android:layout_width="150dp"
+                            android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            android:src="@drawable/freelancer" />
-                    </androidx.cardview.widget.CardView>
+                            android:layout_marginTop="8dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/freelancer"
+                            android:contentDescription="@string/free" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
             </LinearLayout>
 
@@ -107,26 +138,40 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/client_user"
-                        android:textColor="#5b5b5b"
-                        android:textStyle="bold" />
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:cardBackgroundColor="#111417"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/ratingCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="8dp"
+                        app:cardBackgroundColor="#F0F4F8"
                         app:cardCornerRadius="22dp"
-                        app:cardElevation="3dp">
+                        app:cardElevation="3dp"
+                        app:layout_constraintEnd_toStartOf="@+id/paymentCard"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.48">
 
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/clientuser" />
-                    </androidx.cardview.widget.CardView>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rating"
+                                android:textColor="#3FA796"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="8dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/rating" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
 
                 <LinearLayout
@@ -135,26 +180,40 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/free"
-                        android:textColor="#5b5b5b"
-                        android:textStyle="bold" />
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:cardBackgroundColor="#cbccce"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/freeCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        app:cardBackgroundColor="#F0F4F8"
                         app:cardCornerRadius="22dp"
-                        app:cardElevation="3dp">
+                        app:cardElevation="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/clientUserCard"
+                        app:layout_constraintTop_toBottomOf="@+id/paymentCard"
+                        app:layout_constraintWidth_percent="0.48">
 
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/freelancing" />
-                    </androidx.cardview.widget.CardView>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/free"
+                                android:textColor="#3FA796"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="8dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/freelancing" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
             </LinearLayout>
 

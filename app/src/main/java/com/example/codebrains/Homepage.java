@@ -2,9 +2,11 @@ package com.example.codebrains;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -20,11 +22,22 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.codebrains.databinding.ActivityHomepageBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Homepage extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomepageBinding binding;
+    FirebaseAuth auth;
+    FirebaseDatabase database;
+    DatabaseReference reference;
+    String profession;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +46,10 @@ public class Homepage extends AppCompatActivity {
         // Inflate the binding layout
         binding = ActivityHomepageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        auth=FirebaseAuth.getInstance();
+
+        FirebaseUser user=auth.getCurrentUser();
+        database=FirebaseDatabase.getInstance();
 
         // Set up the toolbar
         setSupportActionBar(binding.appBarHomepage.toolbar);
@@ -41,9 +58,9 @@ public class Homepage extends AppCompatActivity {
         binding.appBarHomepage.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .setAnchorView(R.id.fab).show();
+                Intent i=new Intent(Homepage.this,AIchatbot.class);
+                startActivity(i);
+                finish();
             }
         });
 
@@ -70,11 +87,23 @@ public class Homepage extends AppCompatActivity {
 
                 if (id == R.id.nav_contact_us) {
                     // Navigate to the Contact Us page
-                    Intent intent = new Intent(Homepage.this, connectus.class);
-                    startActivity(intent);
+                    Contactus contactusFragment = new Contactus(Homepage.this);
+
+
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.nav_home, contactusFragment)
+                            .commit();
                     return true;
                 }
-                if (id == R.id.profile) {
+                else if (id == R.id.nav_home) {
+                    // Navigate to the Profile Fragment
+                    FragmentManager fm = getSupportFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.replace(R.id.home, new HomeFragment()); // Use the correct container ID
+                    ft.commit(); // Don't forget to commit the transaction
+                    return true;
+                }
+                else if (id == R.id.nav_profile ) {
                     // Navigate to the Profile Fragment
                     FragmentManager fm = getSupportFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
@@ -91,6 +120,10 @@ public class Homepage extends AppCompatActivity {
         });
     }
 
+    private void processProfession(String profession) {
+        this.profession=profession;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -104,4 +137,5 @@ public class Homepage extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }

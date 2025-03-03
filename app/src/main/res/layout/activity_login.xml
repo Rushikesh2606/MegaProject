@@ -30,33 +30,31 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/log"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textColor="#000000"
-                android:gravity="center" />
+                android:gravity="center"
+                android:fontFamily="sans-serif-medium" />
 
-            <RelativeLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="58dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:backgroundTint="#4285F4">
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp">
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/google_sign_in_button"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="58dp"
                     android:backgroundTint="#4285F4"
-                    android:drawablePadding="8dp"
                     android:text="@string/conti"
                     android:textColor="#FFFFFF"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40.6dp"
-                    android:src="@drawable/google3"
-                    android:layout_marginTop="3.9dp"
-                    android:background="@drawable/cirsl"/>
-            </RelativeLayout>
+                    android:textSize="16sp"
+                    app:icon="@drawable/google3"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:iconSize="24dp" />
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,37 +65,71 @@
                 android:textSize="16sp"
                 android:gravity="center" />
 
-            <EditText
-                android:id="@+id/email"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_layout"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:hint="@string/prompt_email"
-                android:padding="12dp"
-                android:textColorHint="#808080"
-                android:backgroundTint="#DDDDDD"
-                android:inputType="textEmailAddress" />
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <EditText
-                android:id="@+id/password"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_layout"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColorHint="#808080"
                 android:hint="@string/pas"
-                android:padding="12dp"
-                android:backgroundTint="#DDDDDD"
-                android:inputType="textPassword" />
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:passwordToggleEnabled="true"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <Button
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/country_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Profession"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/profession"
+                    android:text="Profession"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/sign_up_button"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="58dp"
                 android:layout_marginTop="24dp"
                 android:text="@string/login"
-                android:backgroundTint="#1EB980"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:cornerRadius="24dp"
+                app:backgroundTint="#1EB980" />
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
