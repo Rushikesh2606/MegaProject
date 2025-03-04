@@ -27,30 +27,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         auth=FirebaseAuth.getInstance();
-//        if(auth.getCurrentUser()!=null){
-//            SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-//            String profession = sharedPreferences.getString("profession", "");
-//            if(profession.equals("client")){
-//                Intent i=new Intent(MainActivity.this,Homepage.class);
-//                startActivity(i);
-//                finish();
-//            }
-//        else if(profession.equals("freelancer")) {
-//                Intent i=new Intent(MainActivity.this,Homepage_developer.class);
-//                startActivity(i);
-//                finish();
-//            }
-//        }
-//        else{
-//            Intent i=new Intent(MainActivity.this, MainActivity2.class);
-//            startActivity(i);
-//            finish();
-//        }
+        if(auth.getCurrentUser()!=null){
+            SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+            String profession = sharedPreferences.getString("profession", "");
+            if(profession.equals("client")){
+                Intent i=new Intent(MainActivity.this,Homepage.class);
+                startActivity(i);
+                finish();
+            }
+        else if(profession.equals("freelancer")) {
+                Intent i=new Intent(MainActivity.this,Homepage_developer.class);
+                startActivity(i);
+                finish();
+            }
+        }
+        else{
+            Intent i=new Intent(MainActivity.this, MainActivity2.class);
+            startActivity(i);
+            finish();
+        }
 
 
 
-        Intent i =new Intent(MainActivity.this, MainActivity2.class);
-        startActivity(i);
-        finish();
+//        Intent i =new Intent(MainActivity.this, MainActivity2.class);
+//        startActivity(i);
+//        finish();
     }
 }

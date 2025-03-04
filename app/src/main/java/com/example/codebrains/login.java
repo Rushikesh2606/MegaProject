@@ -2,7 +2,6 @@ package com.example.codebrains;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,21 +13,18 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-
 
 public class login extends AppCompatActivity {
     EditText email, password;
     FirebaseAuth firebaseAuth;
     AutoCompleteTextView profession;
-    ArrayList<String> arr_profession=new ArrayList<>(Arrays.asList("Client","Freelancer"));
+    ArrayList<String> arr_profession = new ArrayList<>(Arrays.asList("Client", "Freelancer"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +33,8 @@ public class login extends AppCompatActivity {
 
         // Initialize Firebase Auth
         firebaseAuth = FirebaseAuth.getInstance();
-        profession=findViewById(R.id.profession);
-        ArrayAdapter<String> aa= new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1,arr_profession);
+        profession = findViewById(R.id.profession);
+        ArrayAdapter<String> aa = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, arr_profession);
         profession.setAdapter(aa);
         Button loginButton = findViewById(R.id.sign_up_button);
         email = findViewById(R.id.email);
@@ -46,7 +42,7 @@ public class login extends AppCompatActivity {
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 String Email = email.getText().toString().trim();
                 String Password = password.getText().toString().trim();
                 String role = profession.getText().toString().trim(); // Get selected profession
@@ -82,25 +78,29 @@ public class login extends AppCompatActivity {
                                     // Save profession in SharedPreferences
                                     SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString("profession", role); // Save profession
-                                    editor.apply(); // Commit changes
+                                    editor.putString("profession", role);
+                                    editor.apply();
 
-                                    // Login successful
                                     Toast.makeText(login.this, "Login successful!", Toast.LENGTH_SHORT).show();
 
-                                    // Navigate to Homepage
-                                    Intent intent = new Intent(login.this, Homepage.class);
+                                    // Navigate to the appropriate homepage based on the role.
+                                    Intent intent;
+                                    if (role.equals("Client")) {
+                                        intent = new Intent(login.this, Homepage.class);
+                                    } else if (role.equals("Freelancer")) {
+                                        intent = new Intent(login.this, Homepage_developer.class);
+                                    } else {
+                                        // Fallback if role is not set correctly.
+                                        intent = new Intent(login.this, Homepage.class);
+                                    }
                                     startActivity(intent);
-                                    finish(); // Close login activity
+                                    finish();  // Close login activity
                                 } else {
-                                    // Login failed
                                     Toast.makeText(login.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
             }
         });
-
-
     }
 }
