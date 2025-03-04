@@ -1,6 +1,5 @@
 package com.example.codebrains;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,24 +12,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 public class Contactus extends Fragment {
-
-Context context;
-    public Contactus(Context context) {
-        // Required empty public constructor
-this.context=context;
-    }
-
 
     private EditText etFullName, etMessage;
     private Button btnSendMessage;
 
+    // Required public no-argument constructor
+    public Contactus() {
+        // No custom parameters; use newInstance pattern if you need to pass data.
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-View view=inflater.inflate(R.layout.fragment_contactus, container, false);
+        View view = inflater.inflate(R.layout.fragment_contactus, container, false);
 
         etFullName = view.findViewById(R.id.etFullName);
         etMessage = view.findViewById(R.id.etMessage);
@@ -40,12 +35,13 @@ View view=inflater.inflate(R.layout.fragment_contactus, container, false);
         btnSendMessage.setOnClickListener(v -> sendEmail());
         return view;
     }
+
     private void sendEmail() {
         String fullName = etFullName.getText().toString().trim();
         String message = etMessage.getText().toString().trim();
 
         if (fullName.isEmpty() || message.isEmpty()) {
-            Toast.makeText(context, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -62,7 +58,7 @@ View view=inflater.inflate(R.layout.fragment_contactus, container, false);
         try {
             startActivity(Intent.createChooser(emailIntent, "Send email using:"));
         } catch (Exception e) {
-            Toast.makeText(context, "No email apps installed.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "No email apps installed.", Toast.LENGTH_SHORT).show();
         }
     }
 }

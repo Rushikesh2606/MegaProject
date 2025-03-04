@@ -2,13 +2,10 @@ package com.example.codebrains;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -24,11 +21,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.codebrains.databinding.ActivityHomepageBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class Homepage extends AppCompatActivity {
 
@@ -36,7 +29,6 @@ public class Homepage extends AppCompatActivity {
     private ActivityHomepageBinding binding;
     FirebaseAuth auth;
     FirebaseDatabase database;
-    DatabaseReference reference;
     String profession;
 
     @Override
@@ -46,10 +38,10 @@ public class Homepage extends AppCompatActivity {
         // Inflate the binding layout
         binding = ActivityHomepageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        auth=FirebaseAuth.getInstance();
 
-        FirebaseUser user=auth.getCurrentUser();
-        database=FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
 
         // Set up the toolbar
         setSupportActionBar(binding.appBarHomepage.toolbar);
@@ -58,9 +50,9 @@ public class Homepage extends AppCompatActivity {
         binding.appBarHomepage.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(Homepage.this,AIchatbot.class);
-                startActivity(i);
-                finish();
+                Intent intent = new Intent(Homepage.this, AIchatbot.class);
+                startActivity(intent);
+
             }
         });
 
@@ -79,39 +71,42 @@ public class Homepage extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        // Handle navigation drawer item clicks
+        // Handle navigation drawer item clicks manually where needed
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
 
                 if (id == R.id.nav_contact_us) {
-                    // Navigate to the Contact Us page
-                    Contactus contactusFragment = new Contactus(Homepage.this);
-
-
+                    // Navigate to the Contact Us page using the no-argument constructor.
+                    Contactus contactusFragment = new Contactus();
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.nav_home, contactusFragment)
+                            .replace(R.id.nav_host_fragment_content_homepage, contactusFragment)
                             .commit();
+                    drawer.closeDrawers();
                     return true;
-                }
-                else if (id == R.id.nav_home) {
+                } else if (id == R.id.nav_home) {
+                    // Navigate to the Home Fragment
+                    FragmentManager fm = getSupportFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.replace(R.id.nav_host_fragment_content_homepage, new HomeFragment());
+                    ft.commit();
+                    drawer.closeDrawers();
+                    return true;
+                } else if (id == R.id.nav_profile) {
                     // Navigate to the Profile Fragment
                     FragmentManager fm = getSupportFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.home, new HomeFragment()); // Use the correct container ID
-                    ft.commit(); // Don't forget to commit the transaction
+                    ft.replace(R.id.nav_host_fragment_content_homepage, new ProfileFragment());
+                    ft.commit();
+                    drawer.closeDrawers();
                     return true;
-                }
-                else if (id == R.id.nav_profile ) {
+                }else if (id == R.id.post) {
                     // Navigate to the Profile Fragment
-                    FragmentManager fm = getSupportFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.home, new ProfileFragment()); // Use the correct container ID
-                    ft.commit(); // Don't forget to commit the transaction
-                    return true;
-                }
+                   Intent intent=new Intent(Homepage.this,JobpostingActivity.class);
+                   startActivity(intent);
 
+                }
 
                 // Default behavior for other menu items
                 return NavigationUI.onNavDestinationSelected(item, navController)
@@ -121,12 +116,12 @@ public class Homepage extends AppCompatActivity {
     }
 
     private void processProfession(String profession) {
-        this.profession=profession;
+        this.profession = profession;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu; this adds items to the action bar if present.
         getMenuInflater().inflate(R.menu.homepage, menu);
         return true;
     }
@@ -137,5 +132,4 @@ public class Homepage extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
 }

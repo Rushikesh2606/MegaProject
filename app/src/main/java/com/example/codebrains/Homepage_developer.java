@@ -6,7 +6,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -29,23 +28,20 @@ public class Homepage_developer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityHomepageDeveloperBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarHomepageDeveloper.toolbar);
-        binding.appBarHomepageDeveloper.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(Homepage_developer.this,AIchatbot.class);
-                startActivity(i);
-                finish();
-            }
+        binding.appBarHomepageDeveloper.fab.setOnClickListener(view -> {
+            Intent intent = new Intent(Homepage_developer.this, AIchatbot.class);
+            startActivity(intent);
+            finish();
         });
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+        // Configure top-level destinations for the Navigation Component.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setOpenableLayout(drawer)
@@ -54,43 +50,48 @@ public class Homepage_developer extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        // Override NavigationView item selection to handle some items manually.
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
+                boolean handled = false;
 
                 if (id == R.id.Profile) {
                     FragmentManager fm = getSupportFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.home, new developer_profile()); // Use the correct container ID
+                    ft.replace(R.id.nav_host_fragment_content_homepage_developer, new developer_profile());
                     ft.commit();
+                    handled = true;
                 } else if (id == R.id.Home) {
-                    // Navigate to home fragment
                     navController.navigate(R.id.nav_home);
+                    handled = true;
                 } else if (id == R.id.findjob) {
                     FragmentManager fm = getSupportFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.home, new HomeFragment()); // Use the correct container ID
+                    ft.replace(R.id.nav_host_fragment_content_homepage_developer, new HomeFragment());
                     ft.commit();
-//                    Intent i = new Intent(Homepage_developer.this, FindJobActivity.class);
-//                    startActivity(i);
+                    handled = true;
                 } else if (id == R.id.evaluate_project) {
-//                    Intent i = new Intent(Homepage_developer.this, EvaluateProjectActivity.class);
-//                    startActivity(i);
+                    // TODO: Handle evaluate_project manually or navigate to its destination.
+                    handled = true;
                 } else if (id == R.id.chat) {
-//                    Intent i = new Intent(Homepage_developer.this, ChatActivity.class);
-//                    startActivity(i);
+                    // TODO: Handle chat manually or navigate to its destination.
+                    handled = true;
                 } else if (id == R.id.ContactUs) {
-
-                    Contactus contactusFragment = new Contactus(Homepage_developer.this);
-
-
+                    // Use the updated Contactus fragment with a no-argument constructor.
+                    Contactus contactusFragment = new Contactus();
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.nav_home, contactusFragment)
+                            .replace(R.id.nav_host_fragment_content_homepage_developer, contactusFragment)
                             .commit();
-                    return true;
+                    handled = true;
                 }
 
+                // Close the drawer after a selection is made.
+                drawer.closeDrawers();
+                if (handled) {
+                    return true;
+                }
                 return NavigationUI.onNavDestinationSelected(item, navController)
                         || Homepage_developer.super.onOptionsItemSelected(item);
             }
@@ -99,7 +100,7 @@ public class Homepage_developer extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu; this adds items to the action bar if present.
         getMenuInflater().inflate(R.menu.homepage_developer, menu);
         return true;
     }

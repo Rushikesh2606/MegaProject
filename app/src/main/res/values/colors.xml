@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="green">#1EB980</color>
+    <color name="active_step">#1EB980</color>
+
+
+
 </resources>
