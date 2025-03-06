@@ -5,30 +5,38 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JobPagerAdapter extends FragmentStateAdapter {
-    public JobPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+    private final List<JobFragment> fragments = new ArrayList<>();
+    private final JobAdapter.OnJobCloseListener closeListener;
+
+    public JobPagerAdapter(@NonNull FragmentActivity fragmentActivity, JobAdapter.OnJobCloseListener listener) {
         super(fragmentActivity);
+        this.closeListener = listener;
+        createFragments();
+    }
+
+    private void createFragments() {
+        fragments.add(JobFragment.newInstance("All", closeListener));
+        fragments.add(JobFragment.newInstance("Open", closeListener));
+        fragments.add(JobFragment.newInstance("In Progress", closeListener));
+        fragments.add(JobFragment.newInstance("Completed", closeListener));
     }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        switch (position) {
-            case 0:
-                return JobFragment.newInstance("all");
-            case 1:
-                return JobFragment.newInstance("open");
-            case 2:
-                return JobFragment.newInstance("in-progress");
-            case 3:
-                return JobFragment.newInstance("completed");
-            default:
-                return JobFragment.newInstance("all");
-        }
+        return fragments.get(position);
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return fragments.size();
+    }
+
+    public List<JobFragment> getFragments() {
+        return fragments;
     }
 }

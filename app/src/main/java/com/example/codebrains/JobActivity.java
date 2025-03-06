@@ -2,19 +2,16 @@ package com.example.codebrains;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-public class JobActivity extends AppCompatActivity {
+public class JobActivity extends AppCompatActivity implements JobAdapter.OnJobCloseListener {
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -28,11 +25,13 @@ public class JobActivity extends AppCompatActivity {
             return insets;
         });
 
-
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         ViewPager2 viewPager = findViewById(R.id.viewPager);
 
-        viewPager.setAdapter(new JobPagerAdapter(this));
+        // Initialize adapter with the close listener
+        JobPagerAdapter pagerAdapter = new JobPagerAdapter(this, this);
+        viewPager.setAdapter(pagerAdapter);
+
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> {
                     switch (position) {
@@ -52,7 +51,11 @@ public class JobActivity extends AppCompatActivity {
                 }).attach();
     }
 
-    public void View_detalisbtn(View view) {
+    @Override
+    public void onJobClosed(int position) {
+        // Handle job closure across all fragments
 
     }
+
+    // Remove unused View_detalisbtn method
 }

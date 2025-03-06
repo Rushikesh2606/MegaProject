@@ -27,6 +27,9 @@
         android:theme="@style/Theme.CodeBrains"
         tools:targetApi="31">
         <activity
+            android:name=".Job_View_Details"
+            android:exported="false" />
+        <activity
             android:name=".JobActivity"
             android:exported="false" />
         <activity
@@ -65,10 +68,10 @@
             android:exported="false" />
         <activity
             android:name=".login"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity2"
             android:exported="true">

@@ -101,7 +101,7 @@
                 android:paddingEnd="16dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:onClick="View_detalisbtn"/>
+               />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCloseJob"
