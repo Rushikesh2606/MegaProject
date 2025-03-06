@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    android:padding="16dp">
+    android:padding="15dp">
+    <FrameLayout
+        android:id="@+id/loading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:visibility="visible"> <!-- Initially visible -->
 
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+    </FrameLayout>
+<ScrollView
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,29 +31,41 @@
         android:gravity="center_horizontal">
 
         <!-- Header -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@mipmap/ic_launcher_foreground"
+                android:layout_width="60dp"
+                android:layout_height="60dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edit Profile"
             android:textColor="@color/black"
+            android:layout_gravity="center"
             android:textSize="24sp"
-            android:fontFamily="sans-serif-medium"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="16dp" />
+            android:fontFamily="sans-serif-medium" />
 
+        </LinearLayout>
         <!-- Profile Picture Section -->
 
         <!-- Personal Information Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="216dp"
+            android:weightSum="2"
             android:layout_marginBottom="16dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="213dp"
+                android:id="@+id/client_profile_image"
+                android:layout_width="0dp"
                 android:layout_height="158dp"
+                android:layout_weight="1"
                 android:layout_gravity="center"
                 android:padding="6dp"
                 android:scaleType="centerCrop"
@@ -42,7 +73,8 @@
 
             <Button
                 android:id="@+id/btn_upload_photo"
-                android:layout_width="144dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#1EB980"
                 android:padding="12dp"
@@ -172,3 +204,4 @@
             android:layout_marginTop="16dp" />
     </LinearLayout>
 </ScrollView>
+</RelativeLayout>

@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -32,6 +33,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -42,7 +44,7 @@ public class register extends AppCompatActivity {
     RadioGroup radiogrp;
     EditText dob, username, password, rePassword, contactNo;
     private static final int CAMERA_REQ = 100, GALLERY_REQ = 200;
-    private Uri profileImageUri;  // Changed to Uri
+    private Bitmap profileImageBitmap;  // Changed to Bitmap
 
     FirebaseAuth auth;
     FirebaseDatabase database;
@@ -132,23 +134,21 @@ public class register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validateFields()) {
-                    String pass=password.getText().toString();
+                    String pass = password.getText().toString();
                     String uname = username.getText().toString();
                     String date = dob.getText().toString();
                     String contact = contactNo.getText().toString();
                     String spin = spinner.getText().toString();
-                    String profile_uri;
+                    String profile_base64 = "";
 
-                    if (profileImageUri != null) {
-                        profile_uri = profileImageUri.toString();
-                    } else {
-                        profile_uri = "";
+                    if (profileImageBitmap != null) {
+                        profile_base64 = bitmapToBase64(profileImageBitmap);
                     }
 
                     // Listen to the radio group to check the selected role
                     int selectedId = radiogrp.getCheckedRadioButtonId();
                     if (selectedId == R.id.freelancer) {
-                        Bundle bundle=new Bundle();
+                        Bundle bundle = new Bundle();
                         // Create the intent to send data to freelancer_form1
                         Intent i = new Intent(register.this, freelancer_form1.class);
                         bundle.putString("first_name", name);
@@ -160,19 +160,13 @@ public class register extends AppCompatActivity {
                         bundle.putString("dob", date);
                         bundle.putString("contact_no", contact);
                         bundle.putString("gender", spin);
+                        bundle.putString("profile_image_base64", profile_base64);
 
                         i.putExtras(bundle);
-                        // Pass the image data as Uri
-                        if (profileImageUri != null) {
-                            bundle.putString("profile_image_uri", profileImageUri.toString());
-                        }
-                        else{
-                            bundle.putString("profile_image_uri", "");
-                        }
-
                         startActivity(i);
                     } else {
                         // Register as a client
+                        String finalProfile_base6 = profile_base64;
                         auth.createUserWithEmailAndPassword(email, pass)
                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                     @Override
@@ -182,7 +176,7 @@ public class register extends AppCompatActivity {
                                             DatabaseReference reference = database.getReference().child("user").child(id);
 
                                             // Create a client object
-                                            client user = new client(name, surname, email, pass, country, uname, contact, spin, "Client", profile_uri, date,0,0,0,0);
+                                            client user = new client(name, surname, email, pass, country, uname, contact, spin, "Client", finalProfile_base6, date, 0, 0, 0, 0);
 
                                             reference.setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
@@ -215,18 +209,25 @@ public class register extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             if (requestCode == CAMERA_REQ) {
                 // Get the image from the camera
-                Bitmap photo = (Bitmap) data.getExtras().get("data");
-                profileImageUri = getImageUri(photo);  // Convert Bitmap to Uri
+                profileImageBitmap = (Bitmap) data.getExtras().get("data");
             } else if (requestCode == GALLERY_REQ) {
                 // Get the image from the gallery
-                profileImageUri = data.getData();
+                Uri selectedImage = data.getData();
+                try {
+                    profileImageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
-    private Uri getImageUri(Bitmap inImage) {
-        String path = MediaStore.Images.Media.insertImage(getContentResolver(), inImage, "Title", null);
-        return Uri.parse(path);
+    // Convert Bitmap to Base64
+    private String bitmapToBase64(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(byteArray, Base64.DEFAULT);
     }
 
     // Validate fields before proceeding

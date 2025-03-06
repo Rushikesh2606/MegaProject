@@ -7,6 +7,9 @@ public class freelancer {
             email, password, country, username, dob, contactNo, gender;
     int total_jobs, in_progress, completed, pending;
 
+    public freelancer() {
+    }
+
     public freelancer(String profession, String desc, String passout, String degree,
                       String language, String institute, String availability,
                       String skills, String tagLine, String tools,

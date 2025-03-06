@@ -90,6 +90,9 @@ String profession;
         this.total_jobs = total_jobs;
     }
 
+    public client() {
+    }
+
     public String getEmail() {
         return email;
     }
