@@ -54,4 +54,8 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="title_activity_homepage_developer">Homepage_developer</string>
+
+
+    <string name="job_header_image_desc">Header image showing available job opportunities</string>
+
 </resources>
