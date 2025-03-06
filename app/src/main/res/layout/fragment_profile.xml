@@ -288,35 +288,6 @@
                 android:layout_marginTop="24dp" />
 
             <!-- Tabs for Filtering Jobs -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp"
-                android:background="#FFFFFF"
-                android:padding="8dp"
-                android:gravity="center">
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="All Jobs"
-                    android:backgroundTint="#2196F3"
-                    android:textColor="#FFFFFF"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="8dp" />
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Open"
-                    android:backgroundTint="#4CAF50"
-                    android:textColor="#FFFFFF"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -329,20 +300,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="In-Progress"
+                    android:text="Job List"
                     android:backgroundTint="#FFC107"
                     android:textColor="#FFFFFF"
+                    android:onClick="joblistbtn"
                     android:layout_marginEnd="8dp"
                     android:layout_marginTop="8dp" />
 
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Completed"
-                    android:backgroundTint="#2196F3"
-                    android:textColor="#FFFFFF"
-                    android:layout_marginTop="8dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

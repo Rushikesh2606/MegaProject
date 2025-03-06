@@ -1,5 +1,6 @@
 package com.example.codebrains;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -139,7 +140,9 @@ ScrollView scroll;
                 Toast.makeText(getContext(), "Failed to load data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
+
 
     private String getValidString(String value) {
         return value != null ? value : "N/A";

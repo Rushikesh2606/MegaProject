@@ -132,4 +132,9 @@ public class Homepage extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+    public void joblistbtn(View view) {
+        Intent intent=new Intent(Homepage.this , JobActivity.class);
+        startActivity(intent);
+    }
 }
