@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,7 +18,8 @@ import java.util.Calendar;
 public class freelancer_form1 extends AppCompatActivity {
 
     Button btn_submit;
-    EditText calendertext,Tools,skills,desc,tagLine;
+    EditText calendertext,Tools,desc,tagLine;
+    AutoCompleteTextView skills;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,11 @@ public class freelancer_form1 extends AppCompatActivity {
         skills=findViewById(R.id.skills);
         desc=findViewById(R.id.desc);
         tagLine=findViewById(R.id.tagLine);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_dropdown_item_1line,
+                getResources().getStringArray(R.array.job_categories));
+        skills.setAdapter(adapter);
+
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override

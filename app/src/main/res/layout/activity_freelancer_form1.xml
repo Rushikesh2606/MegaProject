@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
@@ -23,78 +24,93 @@
             android:layout_marginBottom="16dp" />
 
         <!-- Specialized Skills -->
-        <EditText
-            android:id="@+id/skills"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Specialized Skills"
-            android:background="@android:drawable/edit_text"
-            android:textColor="#000"
-            android:textColorHint="#000"
-            android:padding="12dp"
-            android:layout_marginBottom="8dp" />
+            android:hint="Job Category"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/skills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#000"
+                android:textColor="#000" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Tools/Software Expertise -->
-        <EditText
-            android:id="@+id/tools"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tools/Software Expertise"
-            android:background="@android:drawable/edit_text"
-            android:textColor="#000"
-            android:textColorHint="#000"
-            android:padding="12dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textColorHint="#000" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Tagline -->
-        <EditText
-            android:id="@+id/tagLine"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tagline"
-            android:background="@android:drawable/edit_text"
-            android:textColor="#000"
-            android:textColorHint="#000"
-            android:padding="12dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tagLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textColorHint="#000" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Description/About Me -->
-        <EditText
-            android:id="@+id/desc"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:hint="Description/About Me"
-            android:background="@android:drawable/edit_text"
-            android:textColor="#000"
-            android:textColorHint="#000"
-            android:gravity="top|start"
-            android:padding="12dp"
-            android:layout_marginBottom="8dp"
-            android:inputType="textMultiLine" />
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/desc"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:textColor="#000"
+                android:textColorHint="#000" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Years of Experience -->
-        <EditText
-            android:id="@+id/calendertext"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Years of Experience"
-            android:background="@android:drawable/edit_text"
-            android:textColor="#000"
-            android:textColorHint="#000"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="16dp">
 
-            android:inputType="number" />
-
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/calendertext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textColor="#000"
+                android:textColorHint="#000" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Next Button -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Next"
+            android:layout_marginTop="12dp"
+
             android:backgroundTint="#1EB980"
-            android:textColor="#fff"
-            android:padding="12dp" />
+            android:textColor="#fff" />
     </LinearLayout>
 </ScrollView>
