@@ -42,6 +42,12 @@ public class JobController {
         this.noOfBidsReceived = noOfBidsReceived;
         this.postedDate = postedDate;
     }
+    public JobController(String title, String date, String status, int bids) {
+        this.jobTitle = title;
+        this.postedDate = date;
+        this.status = status;
+        this.noOfBidsReceived = bids;
+    }
 
     public JobController(String attachments, String jobDescription, String jobCategory, String jobTitle, String username, String id) {
         this.attachments = attachments;

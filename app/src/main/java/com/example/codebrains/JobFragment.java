@@ -13,8 +13,8 @@ import java.util.List;
 
 public class JobFragment extends Fragment implements JobAdapter.OnJobCloseListener {
     private String filter;
-    private List<Job> allJobs = new ArrayList<>();
-    private List<Job> filteredJobs = new ArrayList<>();
+    private List<JobController> allJobs = new ArrayList<>();
+    private List<JobController> filteredJobs = new ArrayList<>();
     private JobAdapter adapter;
     private JobAdapter.OnJobCloseListener closeListener;
 
@@ -35,11 +35,11 @@ public class JobFragment extends Fragment implements JobAdapter.OnJobCloseListen
         }
 
         // Initialize sample data
-        allJobs.add(new Job("freelance work", "2025-03-02 17:37:49", "In Progress", 0));
-        allJobs.add(new Job("React Developer", "2025-03-03 08:43:55", "In Progress", 0));
-        allJobs.add(new Job("Video Editor", "2025-03-05 07:37:27", "In Progress", 0));
-        allJobs.add(new Job("Mobile Developer", "2025-03-06 12:38:27", "Open", 2));
-        allJobs.add(new Job("Web Project", "2025-02-05 12:38:27", "Completed", 20));
+        allJobs.add(new JobController("freelance work", "2025-03-02 17:37:49", "In Progress", 0));
+        allJobs.add(new JobController("React Developer", "2025-03-03 08:43:55", "In Progress", 0));
+        allJobs.add(new JobController("Video Editor", "2025-03-05 07:37:27", "In Progress", 0));
+        allJobs.add(new JobController("Mobile Developer", "2025-03-06 12:38:27", "Open", 2));
+        allJobs.add(new JobController("Web Project", "2025-02-05 12:38:27", "Completed", 20));
     }
 
     @Override
@@ -58,7 +58,7 @@ public class JobFragment extends Fragment implements JobAdapter.OnJobCloseListen
 
     private void filterJobs() {
         filteredJobs.clear();
-        for (Job job : allJobs) {
+        for (JobController job : allJobs) {
             if ("All".equalsIgnoreCase(filter)) {
                 filteredJobs.add(job);
             } else if (job.getStatus().equalsIgnoreCase(filter)) {
@@ -70,7 +70,7 @@ public class JobFragment extends Fragment implements JobAdapter.OnJobCloseListen
     public void handleJobClosed(int position) {
         if (position >= 0 && position < allJobs.size()) {
             // Remove from main list
-            Job removedJob = allJobs.remove(position);
+            JobController removedJob = allJobs.remove(position);
 
             // Remove from filtered list if present
             int filteredPosition = filteredJobs.indexOf(removedJob);
@@ -90,7 +90,7 @@ public class JobFragment extends Fragment implements JobAdapter.OnJobCloseListen
     }
 
     // For updating data from outside
-    public void updateJobs(List<Job> newJobs) {
+    public void updateJobs(List<JobController> newJobs) {
         allJobs.clear();
         allJobs.addAll(newJobs);
         filterJobs();
