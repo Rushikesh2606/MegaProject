@@ -49,12 +49,13 @@ public class JobController {
         this.noOfBidsReceived = bids;
     }
 
-    public JobController(String attachments, String jobDescription, String jobCategory, String jobTitle, String username, String id) {
+    public JobController(String attachments, String jobDescription, String jobCategory, String jobTitle, String username, String id,String status) {
         this.attachments = attachments;
         this.jobDescription = jobDescription;
         this.jobCategory = jobCategory;
         this.jobTitle = jobTitle;
         this.username = username;
+        this.status=status;
         this.id = id;
     }
 

@@ -1,5 +1,6 @@
 package com.example.codebrains;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -106,6 +107,10 @@ public class ReviewSubmitFragment extends Fragment {
                                                             .addOnCompleteListener(task3 -> {
                                                                 if (task3.isSuccessful()) {
                                                                     Toast.makeText(requireContext(), "Job Posted Successfully!", Toast.LENGTH_SHORT).show();
+//                                                                    requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_homepage,new )
+
+                                                                    Intent i=new Intent(getContext(), JobActivity.class);
+                                                                    startActivity(i);
                                                                     // Navigate to a success screen or clear the form
                                                                 } else {
                                                                     Toast.makeText(requireContext(), "Failed to update posted date", Toast.LENGTH_SHORT).show();

@@ -202,6 +202,7 @@ public class JobDetailsFragment extends Fragment {
                                 jobTitleEdit.getText().toString(),
                                 Uid,
                                 id
+                                ,"Open"
                         );
 
                         if (id != null) {

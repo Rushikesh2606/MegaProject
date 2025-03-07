@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,8 @@ public class JobPagerAdapter extends FragmentStateAdapter {
     private final List<JobFragment> fragments = new ArrayList<>();
     private final JobAdapter.OnJobCloseListener closeListener;
 
-    public JobPagerAdapter(@NonNull FragmentActivity fragmentActivity, JobAdapter.OnJobCloseListener listener) {
+    public JobPagerAdapter(@NonNull FragmentActivity fragmentActivity,
+                           JobAdapter.OnJobCloseListener listener) {
         super(fragmentActivity);
         this.closeListener = listener;
         createFragments();
@@ -32,11 +32,11 @@ public class JobPagerAdapter extends FragmentStateAdapter {
     }
 
     @Override
-    public int getItemCount() {
-        return fragments.size();
-    }
+    public int getItemCount() { return fragments.size(); }
 
-    public List<JobFragment> getFragments() {
-        return fragments;
+    public void setJobs(List<JobController> jobs) {
+        for (JobFragment fragment : fragments) {
+            fragment.updateJobs(jobs);
+        }
     }
 }
